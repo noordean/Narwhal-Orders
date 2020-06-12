@@ -2,7 +2,8 @@
 
 class HomeController < AuthenticatedController
   def index
-    @products = ShopifyAPI::Product.find(:all, params: { limit: 10 })
-    @webhooks = ShopifyAPI::Webhook.find(:all)
+    shop_domain = ShopifyAPI::Shop.current.domain
+    shop = Shop.find_by(shopify_domain: shop_domain)
+    @narwhal_orders = shop.narwhal_orders.page(params[:page]).per(20)
   end
 end

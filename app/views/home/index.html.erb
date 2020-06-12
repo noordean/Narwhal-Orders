@@ -1,21 +1,18 @@
-<h2>Products</h2>
-
-<ul>
-  <% @products.each do |product| %>
-    <li><%= link_to product.title, "https://#{@current_shopify_session.domain}/admin/products/#{product.id}", target: "_top" %></li>
-  <% end %>
-</ul>
-
-<hr>
-
-<h2>Webhooks</h2>
-
-<% if @webhooks.present? %>
-  <ul>
-    <% @webhooks.each do |webhook| %>
-      <li><%= webhook.topic %> : <%= webhook.address %></li>
+<div class="orders-list">
+  <% if @narwhal_orders.present? %>
+    <% @narwhal_orders.each do |order| %>
+      <%= link_to "https://#{@current_shopify_session.domain}/admin/orders/#{12345}", target: "_top", class: "order-wrapper" do %>
+        <%= image_tag("narwal_flag.svg", class: "order-icon") %>
+        <div class="order">
+          <div class="order-content">
+            <div><strong><%= order.customer.strip.size > 0 ? order.customer : 'Anonymous' %></strong> made a narwhal order.</div>
+            <div>ORDER <%= order.name %></div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-  </ul>
-<% else %>
-  <p>This app has not created any webhooks for this Shop. Add webhooks to your ShopifyApp initializer if you need webhooks</p>
-<% end %>
+  <% else %>
+    <p>No Narwhal-Order yet! They will show up here as soon as this app detects one.</p>
+  <% end %>
+</div>
+<%= paginate @narwhal_orders %>

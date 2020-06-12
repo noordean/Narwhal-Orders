@@ -1,0 +1,3 @@
+<span class="prev">
+  <%= link_to_unless current_page.first?, image_tag("arrow-left_minor.svg", class: "pagination-arrow #{'disabled-pagination-link' if current_page.first? }"), url, rel: 'prev', remote: remote %>
+</span>

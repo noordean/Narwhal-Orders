@@ -1,7 +1,7 @@
 <div class="orders-list">
   <% if @narwhal_orders.present? %>
     <% @narwhal_orders.each do |order| %>
-      <%= link_to "https://#{@current_shopify_session.domain}/admin/orders/#{12345}", target: "_top", class: "order-wrapper" do %>
+      <%= link_to "https://#{@current_shopify_session.domain}/admin/orders/#{order.order_id}", target: "_top", class: "order-wrapper" do %>
         <%= image_tag("narwal_flag.svg", class: "order-icon") %>
         <div class="order">
           <div class="order-content">

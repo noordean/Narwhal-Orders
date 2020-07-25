@@ -10,7 +10,7 @@ A Shopify app that lists orders that are placed which contain products with the 
 
 ### How To Use
 
-- Visit https://nar-whal-orders.herokuapp.com/
+- Visit _link_
 - Enter your store link and install
 
 Note: This works only on development stores as this is an unlisted app, and ensure you select `Developer Preview` when creating a new store
